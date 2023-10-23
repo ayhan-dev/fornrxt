@@ -1,0 +1,27 @@
+body {
+  width: 250px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1f0808a8;
+  margin: 0; 
+  padding: 0;
+}
+
+#copyButton {
+  cursor: pointer;
+  padding: 12px 24px;
+  background-color: #cdfe0a;
+  color: white;
+  border: none;
+  border-radius: 8px; 
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  text-decoration: none; 
+}
+
+#copyButton:hover {
+  background-color: #45a049;
+}
