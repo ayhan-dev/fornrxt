@@ -1,10 +1,11 @@
-# github extension (Dev Diwan ™ ) 
+# github extension (Dev Diwan ™ ) 🍃
 
 
  Google extension / Windows program - For Github address saver 
 
 
 
+# -------------------------- 
 
 
 
@@ -12,9 +13,13 @@
 
 
 
+
+ 
+# -------------------------- 
+
+ 
 ## Team:  
-♪ [Ayhan](https://ayhan-dev.dev) 
-♪ [telegram](https://t.me/ayhan_gy)
+♪ [Ayhan](https://ayhan-dev.dev) - [telegram](https://t.me/ayhan_gy)
 
  
  ## license GNU 3:
