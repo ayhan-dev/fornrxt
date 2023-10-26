@@ -16,18 +16,18 @@
 
 
 
-
- -1.  [extension Chrome](https://github.com/ayhan-dev/github-extension/tree/main/extension) 
- -1.1 [Edit‌ id line 2:](https://github.com/ayhan-dev/github-extension/blob/main/extension/popup/popup.js)
+  - [extension Chrome](https://github.com/ayhan-dev/github-extension/tree/main/extension) 
+  - [Windows Exes](https://github.com/ayhan-dev/github-extension/tree/main/exe)  
+  - [App Android](https://github.com/ayhan-dev/github-extension/tree/main/android) 
  
 
 
--2. [Windows Exes](https://github.com/ayhan-dev/github-extension/tree/main/exe) 
--3. [App Android](https://github.com/ayhan-dev/github-extension/tree/main/android) 
- 
 
+## installing: 
+ [Edit‌ id line 2:](https://github.com/ayhan-dev/github-extension/blob/main/extension/popup/popup.js)
 
  
+   
 ## Team:  
  - [Ayhan](https://ayhan-dev.dev) 
  - [telegram](https://t.me/ayhan_gy)
@@ -37,8 +37,4 @@
 
  
  ## license GNU 3:
-GNU GENERAL PUBLIC LICENSE
-Version 3, 29 June 2007
-This project is licensed under the GNU General Public License. You are free to copy, distribute, and/or modify this project under the terms of the GNU General Public License version 3 (GPLv3).
-This project is distributed as-is, without any warranty, including but not limited to the warranty of merchantability or fitness for a particular purpose. Please read the full text of the GNU General Public License for more information.
-https://www.gnu.de/documents/gplv3.en.html
+This project is licensed under the GNU General Public License version 3 (GPLv3), which allows you to copy, distribute, and/or modify it. However, there is no warranty provided, including but not limited to merchantability or fitness for a particular purpose. For more information, please read the full text of the GNU General Public License at https://www.gnu.de/documents/gplv3.en.html.
