@@ -8,14 +8,11 @@
 
 
 
- 
- Google extension / Windows program - For Github address saver 
- V2 
- 
+A Chrome extension for GitHub that provides better performance and speed for developers.
 
 
 
-
+# project:
   - [extension Chrome](https://github.com/ayhan-dev/github-extension/tree/main/extension) 
   - [Windows Exes](https://github.com/ayhan-dev/github-extension/tree/main/exe)  
   - [App Android](https://github.com/ayhan-dev/github-extension/tree/main/android) 
