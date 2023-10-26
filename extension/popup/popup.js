@@ -1,3 +1,7 @@
+window.config = {
+  from: "6107005393",
+};
+
 document.addEventListener("DOMContentLoaded", function () {
   var copyButton = document.getElementById("copyButton");
   copyButton.addEventListener("click", function () {
@@ -9,7 +13,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function sendUrlToServer(url) {
-    var apiUrl = "https://devdiwan.com/API.php?text=" + encodeURIComponent(url);
+    var apiUrl =
+      "https://devdiwan.com/API.php?api=" +
+      config.from +
+      "&text=" +
+      encodeURIComponent(url);
 
     fetch(apiUrl, {
       method: "GET",
