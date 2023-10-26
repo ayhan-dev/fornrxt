@@ -1,4 +1,4 @@
-# github extension (Dev Diwan ™ ) 🍃
+# github extension [ForNRxt](https://t.me/ForNRxt) - (Dev Diwan ™ ) 🍃
 
 <img alt="" src="git.png"
      width="630" />
@@ -32,3 +32,8 @@ This project is licensed under the GNU General Public License. You are free to c
 This project is distributed as-is, without any warranty, including but not limited to the warranty of merchantability or fitness for a particular purpose. Please read the full text of the GNU General Public License for more information.
 
 https://www.gnu.de/documents/gplv3.en.html
+
+
+
+
+- 🍃 [Support](https://t.me/ForNRxt)
