@@ -1,8 +1,7 @@
 ## github extension [ForNRxt](https://t.me/ForNRxt) - (Dev.Diwan ™ ) 🍃
 
 <img alt="" src="git.png"
-     width="630" />
-
+     width="500" style="border-radius: 50%;"/>
  
 # -------------------------- 
 
