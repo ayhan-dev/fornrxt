@@ -1,9 +1,10 @@
-## github extension [ForNRxt](https://t.me/ForNRxt) - (Dev.Diwan ™ ) 🍃
+## github extension [ForNRxt](https://t.me/ForNRxt) 🍃
 
-<img alt="" src="git.png"
-     width="500" style="border-radius: 50%;"/>
- 
-# -------------------------- 
+
+<div style="text-align:center">
+    <img src="git.png" alt="" width="200" style="border-radius:50%; object-fit: cover;">
+    <p>ForNRxt extension GitHub 🍃 - (Dev.Diwan ™ )</p>
+</div>
 
 
 
@@ -15,13 +16,17 @@
 
 
 
-- extension: [#----------#](https://github.com/ayhan-dev/github-extension/tree/main/extension) -> [Edit‌ id line 2:](https://github.com/ayhan-dev/github-extension/blob/main/extension/popup/popup.js)
 
-- Windows: [#----------#](https://github.com/ayhan-dev/github-extension/tree/main/exe) 
+ -1.  [extension Chrome](https://github.com/ayhan-dev/github-extension/tree/main/extension) 
+ -1.1 [Edit‌ id line 2:](https://github.com/ayhan-dev/github-extension/blob/main/extension/popup/popup.js)
  
+
+
+-2. [Windows Exes](https://github.com/ayhan-dev/github-extension/tree/main/exe) 
+-3. [App Android](https://github.com/ayhan-dev/github-extension/tree/main/android) 
  
- 
-#----------------------------------------------# 
+
+
  
 ## Team:  
  - [Ayhan](https://ayhan-dev.dev) 
@@ -32,7 +37,6 @@
 
  
  ## license GNU 3:
-
 GNU GENERAL PUBLIC LICENSE
 Version 3, 29 June 2007
 This project is licensed under the GNU General Public License. You are free to copy, distribute, and/or modify this project under the terms of the GNU General Public License version 3 (GPLv3).
