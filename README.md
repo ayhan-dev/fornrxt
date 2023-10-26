@@ -9,7 +9,9 @@
  Google extension / Windows program - For Github address saver 
  V2 
  
-- extension: [#----------#](https://github.com/ayhan-dev/github-extension/tree/main/extension) 
+- extension: [#----------#](https://github.com/ayhan-dev/github-extension/tree/main/extension)
+- [Edit‌ id line 2:](https://github.com/ayhan-dev/github-extension/blob/main/extension/popup/popup.js)
+
 - Windows: [#----------#](https://github.com/ayhan-dev/github-extension/tree/main/exe) 
 
  
