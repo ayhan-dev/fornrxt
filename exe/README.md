@@ -31,6 +31,11 @@ File editing main.py line 15 - {#} token , {#} chat id
    6- install file  
 
 
+
+
+ [teg](t.me/ayhan_gy) 
+ 
+  
  ## license GNU 3:
 
 GNU GENERAL PUBLIC LICENSE
