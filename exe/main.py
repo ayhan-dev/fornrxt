@@ -24,11 +24,9 @@ def send_link_to_api(link):
         error_message = f"General Error: {err}\n"
         log_error(error_message)
 
-
 def log_error(error_message):
     with open("error_log.txt", "a") as error_file:
         error_file.write(error_message)
-
 
 def save_github_links_to_file(file_path):
     while True:
