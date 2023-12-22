@@ -16,7 +16,6 @@ def send_link_to_api(link):
     try:
         response = requests.get(api_url + link)
         response.raise_for_status()
-        print("لینک با موفقیت به API ارسال شد.")
     except requests.exceptions.HTTPError as errh:
         error_message = f"HTTP Error: {errh}\n"
         log_error(error_message)
@@ -37,7 +36,6 @@ def save_github_links_to_file(file_path):
             open_link_in_browser(clipboard_content)
             send_link_to_api(clipboard_content)
         else:
-            print("لینک معتبر نیست.")
         while pyperclip.paste().strip() == clipboard_content:
             pass
 
