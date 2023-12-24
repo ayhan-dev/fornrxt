@@ -1,13 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="popup.css" />
+    <link rel="stylesheet" href="styels/popup.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Chrome sever</title>
   </head>
   <body>
-    <button id="copyButton">Copy Page URL</button>
-    <a href="https://github.com/ayhan-dev/" target="_blank">ayhan</a>
-    <script src="popup.js"></script>
+    <div class="container showMainPage">
+      <div class="mainPage">
+        <div class="header">
+          <h1>Extension</h1>
+          <div class="dropMenu">
+            <button class="dropMenuBtn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+                class="h-6 text-purple lg:ml-2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                ></path>
+              </svg>
+            </button>
+            <nav>
+              <ul>
+                <li>
+                  <button>راهنما</button>
+                </li>
+                <li>
+                  <button>تنظیمات</button>
+                </li>
+                <li>
+                  <a href="#">آدرس گیت هاب پروژه</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="postURLApiBtn">
+          <button class="postToApi">کپی و ارسال لینک صفحه</button>
+        </div>
+      </div>
+      <div class="helpPage">
+        <div class="header">
+          <div class="previewBtn">
+            <button class="backToMainPageBtn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="100"
+                height="100"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm2 12l-4.5 4.5 1.527 1.5 5.973-6-5.973-6-1.527 1.5 4.5 4.5z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="contentHelpPage">
+          <p>راهنما</p>
+        </div>
+      </div>
+      <div class="settingPage">
+        <div class="header">
+          <div class="previewBtn">
+            <button class="backToMainPageBtn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="100"
+                height="100"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm2 12l-4.5 4.5 1.527 1.5 5.973-6-5.973-6-1.527 1.5 4.5 4.5z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <form>
+          <input
+            type="text"
+            class="apiKeyYoutube"
+            placeholder="Api یوتیوب را وارد کنید"
+          />
+          <input
+            type="text"
+            class="apiKeyYoutube"
+            placeholder="Api گیت هاب را وارد کنید"
+          />
+          <button class="saveApiKeyBtn">ذخیره کردن</button>
+        </form>
+      </div>
+    </div>
+    <script src="scripts/popup.js"></script>
   </body>
 </html>
