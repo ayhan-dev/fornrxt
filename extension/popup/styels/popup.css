@@ -1,0 +1,212 @@
+@font-face {
+  font-family: vazir;
+  src: url(../assets/fonts/Vazir.ttf) format("truetype");
+  src: url(../assets/fonts/Vazir.woff) format("woff");
+}
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: vazir;
+}
+:root {
+  --mainBackground: #353535;
+  --btnBackground: #ffffff;
+}
+body {
+  min-width: 250px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.container {
+  min-width: 250px;
+  min-height: 400px;
+  background: linear-gradient(#662d8c, #ed1e79) no-repeat;
+  position: relative;
+  padding: 5px 10px;
+}
+.container.showMainPage .mainPage {
+  display: block;
+}
+.mainPage {
+  display: none;
+  width: 100%;
+  height: 400px;
+  color: #fff;
+  overflow: hidden;
+}
+.mainPage .header {
+  width: 100%;
+  text-align: center;
+}
+.mainPage .header .dropMenu {
+  position: absolute;
+  right: 15px;
+}
+
+.mainPage .header .dropMenu .dropMenuBtn {
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff;
+  justify-content: end;
+  position: relative;
+  border: 0;
+  border-radius: 2px;
+}
+.mainPage .header .dropMenu nav {
+  width: 0px;
+  height: 0;
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  background-color: #dbdbdb;
+  animation: dropDownHide linear 0.3s;
+  transition: height 0.3s, width 0.3s;
+  border-radius: 5px;
+  z-index: 2;
+  overflow: hidden;
+  padding: 0 10px;
+  direction: ltr;
+}
+.mainPage .header .dropMenu:hover nav {
+  height: 90px;
+  width: 140px;
+}
+.mainPage .header .dropMenu nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.mainPage .header .dropMenu nav ul li button {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.mainPage .header .dropMenu nav ul li button,
+.mainPage .header .dropMenu nav ul li a {
+  display: inline-block;
+  width: 100%;
+  font-size: 16px;
+  color: #000;
+}
+.mainPage .header .dropMenu nav ul li button:hover,
+.mainPage .header .dropMenu nav ul li a:hover {
+  color: #00000073;
+}
+.mainPage .postURLApiBtn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.mainPage .postURLApiBtn .postToApi {
+  background-color: var(--btnBackground);
+  box-shadow: 0 0 10px #000000;
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: #ffffff;
+  background-clip: text;
+  border: 0;
+  cursor: pointer;
+}
+.mainPage .postURLApiBtn .postToApi:active {
+  opacity: 0.8;
+}
+.helpPage {
+  display: none;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+.container.showHelpPage .helpPage {
+  display: block;
+}
+.helpPage .header,
+.settingPage .header {
+  text-align: end;
+}
+.helpPage .header .backToMainPageBtn,
+.settingPage .header .backToMainPageBtn {
+  background-color: transparent;
+  fill: #fff;
+  width: 50px;
+  height: 50px;
+  rotate: 180deg;
+  border: 0;
+  margin: 5px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.helpPage .header .backToMainPageBtn svg,
+.settingPage .header .backToMainPageBtn svg {
+  width: 100%;
+  height: 100%;
+}
+.helpPage .backToMainPageBtn:active,
+.settingPage .backToMainPageBtn:active {
+  opacity: 0.8;
+}
+.helpPage .contentHelpPage {
+  width: 50%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(#160847, #a200ff);
+  color: #ececec;
+  border-radius: 50%;
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 10px;
+  transform: translate(-50%, -50%);
+}
+.settingPage {
+  display: none;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+.container.showSettingPage .settingPage {
+  display: block;
+}
+.settingPage form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.settingPage form input {
+  padding: 4px 20px;
+  outline: 0;
+  border: 0;
+  border-radius: 20px;
+  font-size: 15px;
+}
+.settingPage form .saveApiKeyBtn {
+  padding: 5px 20px;
+  border: 0;
+  border-radius: 20px;
+  background-color: var(--btnBackground);
+  box-shadow: 0 0 10px #000000;
+  color: #ffffff;
+  background-clip: text;
+  font-size: 15px;
+}
