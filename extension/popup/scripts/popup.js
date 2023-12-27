@@ -25,15 +25,19 @@ function main() {
       (url.search(/github.com/) === -1 && url.search(/youtube.com/) === -1)
     )
       return showBoxes("error", "آدرس صفحه اشتباه", true);
+
     //Getting Api key from user storage
     let apikeys = JSON.parse(localStorage.getItem("apikeys"));
+
     //Api URL
     let apiUrl = `https://li-80-il.site/API.php?Kay=${
       apikeys.gitHub
     }$text=${encodeURIComponent(url)}`;
+
     if (!apikeys) {
       return showBoxes("error", "Api key در تنظیمات وارد نشده !!!", true);
     }
+
     //Loading animation
     container.classList.add("loadingShow");
     let post = await fetch(apiUrl).catch(() => {
