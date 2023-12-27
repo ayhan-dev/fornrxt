@@ -7,7 +7,6 @@ function main() {
   const apiKeyYoutube = document.querySelector(".apiKeyYoutube");
   const apiKeyGitHub = document.querySelector(".apiKeyGitHub");
   const errorBox = document.querySelector(".errorBox");
-  const loading = document.querySelector(".loading");
 
   //for change the page
   let pageClasses = ["showMainPage", "showHelpPage", "showSettingPage"];
@@ -16,35 +15,30 @@ function main() {
   // window.config = {
   //   from: "6107005393",
   // };
-  container.classList.add("loadingShow");
+
   //sending user url page and Api key
   async function sendUrlToServer(url) {
     //Checking if the page URL is correct
-    if (
-      !url ||
-      (url.search(/github.com/) === -1 && url.search(/youtube.com/) === -1)
-    )
+    if (!url || url.search(/github.com/) === -1)
       return showBoxes("error", "آدرس صفحه اشتباه", true);
 
     //Getting Api key from user storage
-    let apikeys = JSON.parse(localStorage.getItem("apikeys"));
+    let apikeys;
+    if (!JSON.parse(localStorage.getItem("apikeys")))
+      return showBoxes("error", "Api key در تنظیمات وارد نشده !!!", true);
+    else apikeys = JSON.parse(localStorage.getItem("apikeys"));
 
     //Api URL
-    let apiUrl = `https://li-80-il.site/API.php?Kay=${
+    let apiUrl = `https://li-80-il.site/API.php?Key=${
       apikeys.gitHub
-    }$text=${encodeURIComponent(url)}`;
-
-    if (!apikeys) {
-      return showBoxes("error", "Api key در تنظیمات وارد نشده !!!", true);
-    }
+    }&text=${encodeURIComponent(url)}`;
 
     //Loading animation
     container.classList.add("loadingShow");
     let post = await fetch(apiUrl).catch(() => {
       showBoxes("error", " دوباره تلاش کنید!!", true);
     });
-    // --------------------Log---------------
-    console.log(post);
+
     container.classList.remove("loadingShow");
     showBoxes("successfully");
   }
