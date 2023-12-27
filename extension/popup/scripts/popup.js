@@ -84,6 +84,11 @@ function main() {
     e.preventDefault();
     if (!apiKeyYoutube.value && !apiKeyGitHub.value) {
       return showBoxes("error", "کادر ها خالین !!", true);
+    } else if (
+      apiKeyYoutube.value.trim().search(/session:[a-z0-9]/i) === -1 &&
+      apiKeyGitHub.value.trim().search(/session:[a-z0-9]/i) === -1
+    ) {
+      return showBoxes("error", "Api key اشتباه است!", true);
     }
     let apikeys = {
       youTube: apiKeyYoutube.value.trim(),
