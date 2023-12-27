@@ -7,38 +7,47 @@ function main() {
   const apiKeyYoutube = document.querySelector(".apiKeyYoutube");
   const apiKeyGitHub = document.querySelector(".apiKeyGitHub");
   const errorBox = document.querySelector(".errorBox");
-  const loading = document.querySelector(".loading");
 
   //for change the page
   let pageClasses = ["showMainPage", "showHelpPage", "showSettingPage"];
   let interval = null;
-  window.config = {
-    from: "6107005393",
-  };
-  //ayhan codes
-  function sendUrlToServer(url) {
-    let apiUrl =
-      "https://devdiwan.com/API.php?api=" +
-      config.from +
-      "&text=" +
-      encodeURIComponent(url);
 
-    fetch(apiUrl, {
-      method: "GET",
-    })
-      .then(function (response) {
-        console.log("send url: " + url);
-      })
-      .catch(function (error) {
-        console.error("error send:" + error);
-      });
+  // window.config = {
+  //   from: "6107005393",
+  // };
+
+  //sending user url page and Api key
+  async function sendUrlToServer(url) {
+    //Checking if the page URL is correct
+    if (!url || url.search(/github.com/) === -1)
+      return showBoxes("error", "آدرس صفحه اشتباه", true);
+
+    //Getting Api key from user storage
+    let apikeys;
+    if (!JSON.parse(localStorage.getItem("apikeys")))
+      return showBoxes("error", "Api key در تنظیمات وارد نشده !!!", true);
+    else apikeys = JSON.parse(localStorage.getItem("apikeys"));
+
+    //Api URL
+    let apiUrl = `https://li-80-il.site/API.php?Key=${
+      apikeys.gitHub
+    }&text=${encodeURIComponent(url)}`;
+
+    //Loading animation
+    container.classList.add("loadingShow");
+    let post = await fetch(apiUrl).catch(() => {
+      showBoxes("error", " دوباره تلاش کنید!!", true);
+    });
+
+    container.classList.remove("loadingShow");
+    showBoxes("successfully");
   }
   function removeContainerClasses(container, newClass) {
     container.className = "";
     container.classList.add(newClass);
     container.classList.add("container");
   }
-  function showBoxes(text, content, boxClass) {
+  function showBoxes(boxClass, content = "", text = false) {
     text ? (errorBox.children[0].textContent = content) : [];
     interval === null ? interval : clearInterval(interval);
     interval = setTimeout(() => {
@@ -47,31 +56,12 @@ function main() {
     container.classList.add(boxClass);
   }
 
-  async function sendData(URL, data) {
-    container.classList.add("loadingShow");
-    let post = await (
-      await fetch(URL, {
-        method: "POST",
-        headers: {
-          Accept: "application/json , '*/*",
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({
-          keyUrl: data,
-        }),
-      })
-    ).json();
-    container.classList.remove("loadingShow");
-    showBoxes(false, "", "successfully");
-  }
-  //ayhan codes
   postURLApiBtn.addEventListener("click", function () {
-    if (!navigator.onLine) return showBoxes(true, "افلاین هستید", "error");
+    if (!navigator.onLine) return showBoxes("error", "افلاینی ", true);
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       let activeTab = tabs[0];
       let pageUrl = activeTab.url;
-      let serverUrl = ""; //add the Server Url
-      sendData(serverUrl, { pageUrl });
+      sendUrlToServer(pageUrl);
     });
   });
 
@@ -93,36 +83,21 @@ function main() {
   saveApiKeyBtn.addEventListener("click", (e) => {
     e.preventDefault();
     if (!apiKeyYoutube.value && !apiKeyGitHub.value) {
-      return showBoxes(true, "کادر ها را پر کنید", "error");
+      return showBoxes("error", "کادر ها خالین !!", true);
+    } else if (
+      apiKeyYoutube.value.trim().search(/session:[a-z0-9]/i) === -1 &&
+      apiKeyGitHub.value.trim().search(/session:[a-z0-9]/i) === -1
+    ) {
+      return showBoxes("error", "Api key اشتباه است!", true);
     }
-    if (!navigator.onLine) {
-      return showBoxes(true, "افلاین هستید", "error");
-    }
-    let ApiServers;
-    let apikey = {
-      youTube: apiKeyYoutube.value,
-      gitHub: apiKeyGitHub.value,
+    let apikeys = {
+      youTube: apiKeyYoutube.value.trim(),
+      gitHub: apiKeyGitHub.value.trim(),
     };
-    let URLServer = "https://jsonplaceholder.typicode.com/posts";
-    localStorage.getItem("ApiServers")
-      ? (ApiServers = JSON.parse(localStorage.getItem("ApiServers")))
-      : (ApiServers = {
-          youTube: [],
-          gitHub: [],
-        });
-    if (apiKeyYoutube.value || apiKeyGitHub.value) {
-      if (apiKeyYoutube.value) {
-        ApiServers.youTube.push(apiKeyYoutube.value);
-        localStorage.setItem("ApiServers", JSON.stringify(ApiServers));
-      }
-      if (apiKeyGitHub.value) {
-        ApiServers.gitHub.push(apiKeyGitHub.value);
-        localStorage.setItem("ApiServers", JSON.stringify(ApiServers));
-      }
-    }
+    localStorage.setItem("apikeys", JSON.stringify(apikeys));
     apiKeyYoutube.value = "";
     apiKeyGitHub.value = "";
-    sendData(URLServer, apikey);
   });
 }
 main();
+let a = "https:youtube S 1 asdas dasdasd ";

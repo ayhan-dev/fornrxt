@@ -35,7 +35,7 @@ body {
 .errorBox {
   width: 0;
   overflow: hidden;
-  position: fixed;
+  position: absolute;
   top: 50px;
   left: 50%;
   transform: translate(-50%);
@@ -52,7 +52,7 @@ body {
   font-size: 16px;
 }
 .container.error .errorBox {
-  width: 190px;
+  width: 100%;
 }
 .loading {
   display: none;
@@ -238,8 +238,8 @@ body {
   opacity: 0.8;
 }
 .helpPage .contentHelpPage {
-  width: 50%;
-  height: 60%;
+  width: 90%;
+  height: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -252,6 +252,9 @@ body {
   left: 50%;
   padding: 10px;
   transform: translate(-50%, -50%);
+}
+.helpPage .contentHelpPage p a {
+  color: #4aee21;
 }
 .settingPage {
   display: none;
@@ -274,6 +277,7 @@ body {
   transform: translate(-50%, -50%);
 }
 .settingPage form input {
+  direction: ltr;
   padding: 4px 20px;
   outline: 0;
   border: 0;
