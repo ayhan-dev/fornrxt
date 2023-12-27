@@ -29,18 +29,22 @@ function main() {
     else apikeys = JSON.parse(localStorage.getItem("apikeys"));
 
     //Api URL
-    let apiUrl = `https://li-80-il.site/API.php?Key=${
+    console.log(apikeys.gitHub);
+    let apiUrl = `https://li-80-il.site/API.php?key=${
       apikeys.gitHub
     }&text=${encodeURIComponent(url)}`;
 
     //Loading animation
     container.classList.add("loadingShow");
     let post = await fetch(apiUrl).catch(() => {
+      container.classList.remove("loadingShow");
       showBoxes("error", " دوباره تلاش کنید!!", true);
     });
-
+    post.status === 200
+      ? showBoxes("successfully")
+      : showBoxes("error", " دوباره تلاش کنید!!", true);
+    console.log(post.url);
     container.classList.remove("loadingShow");
-    showBoxes("successfully");
   }
   function removeContainerClasses(container, newClass) {
     container.className = "";
@@ -82,18 +86,34 @@ function main() {
   });
   saveApiKeyBtn.addEventListener("click", (e) => {
     e.preventDefault();
+    console.log(apiKeyYoutube.value && apiKeyGitHub.value);
+    let apiKeyRX = /^session:\w+/i;
     if (!apiKeyYoutube.value && !apiKeyGitHub.value) {
       return showBoxes("error", "کادر ها خالین !!", true);
-    } else if (
-      apiKeyYoutube.value.trim().search(/session:[a-z0-9]/i) === -1 &&
-      apiKeyGitHub.value.trim().search(/session:[a-z0-9]/i) === -1
-    ) {
-      return showBoxes("error", "Api key اشتباه است!", true);
+    } else if (apiKeyYoutube.value && apiKeyGitHub.value) {
+      if (
+        !apiKeyRX.test(apiKeyYoutube.value.trim()) ||
+        !apiKeyRX.test(apiKeyGitHub.value.trim())
+      )
+        return showBoxes("error", "Api key اشتباه است!", true);
     }
-    let apikeys = {
-      youTube: apiKeyYoutube.value.trim(),
-      gitHub: apiKeyGitHub.value.trim(),
-    };
+
+    let apikeys;
+    if (localStorage.getItem("apikeys")) {
+      apikeys = JSON.parse(localStorage.getItem("apikeys"));
+      apiKeyYoutube.value.trim()
+        ? (apikeys.youtube = apiKeyYoutube.value.trim())
+        : apikeys;
+      apiKeyGitHub.value.trim()
+        ? (apikeys.gitHub = apiKeyGitHub.value.trim())
+        : apikeys;
+    } else {
+      apikeys = {
+        youtube: apiKeyYoutube.value.trim(),
+        gitHub: apiKeyGitHub.value.trim(),
+      };
+    }
+
     localStorage.setItem("apikeys", JSON.stringify(apikeys));
     apiKeyYoutube.value = "";
     apiKeyGitHub.value = "";
