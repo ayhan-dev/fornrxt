@@ -12,10 +12,6 @@ function main() {
   let pageClasses = ["showMainPage", "showHelpPage", "showSettingPage"];
   let interval = null;
 
-  // window.config = {
-  //   from: "6107005393",
-  // };
-
   //sending user url page and Api key
   async function sendUrlToServer(url) {
     //Checking if the page URL is correct
