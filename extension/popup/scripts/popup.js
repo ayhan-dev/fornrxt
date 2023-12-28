@@ -32,7 +32,7 @@ function main() {
     let apiUrl = `https://li-80-il.site/API.php?key=${
       apikeys.gitHub
     }&text=${encodeURIComponent(url)}`;
-    console.log(apiUrl);
+    
     //Loading animation
     container.classList.add("loadingShow");
     let post = await fetch(apiUrl).catch(() => {
