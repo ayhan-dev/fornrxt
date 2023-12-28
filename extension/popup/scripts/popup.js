@@ -12,10 +12,6 @@ function main() {
   let pageClasses = ["showMainPage", "showHelpPage", "showSettingPage"];
   let interval = null;
 
-  // window.config = {
-  //   from: "6107005393",
-  // };
-
   //sending user url page and Api key
   async function sendUrlToServer(url) {
     //Checking if the page URL is correct
@@ -29,11 +25,10 @@ function main() {
     else apikeys = JSON.parse(localStorage.getItem("apikeys"));
 
     //Api URL
-    console.log(apikeys.gitHub);
     let apiUrl = `https://li-80-il.site/API.php?key=${
       apikeys.gitHub
     }&text=${encodeURIComponent(url)}`;
-
+    console.log(apiUrl);
     //Loading animation
     container.classList.add("loadingShow");
     let post = await fetch(apiUrl).catch(() => {
@@ -43,7 +38,6 @@ function main() {
     post.status === 200
       ? showBoxes("successfully")
       : showBoxes("error", " دوباره تلاش کنید!!", true);
-    console.log(post.url);
     container.classList.remove("loadingShow");
   }
   function removeContainerClasses(container, newClass) {
@@ -86,24 +80,23 @@ function main() {
   });
   saveApiKeyBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log(apiKeyYoutube.value && apiKeyGitHub.value);
     let apiKeyRX = /^session:\w+/i;
-    if (!apiKeyYoutube.value && !apiKeyGitHub.value) {
+    if (!apiKeyYoutube.value && !apiKeyGitHub.value)
       return showBoxes("error", "کادر ها خالین !!", true);
-    } else if (apiKeyYoutube.value && apiKeyGitHub.value) {
-      if (
-        !apiKeyRX.test(apiKeyYoutube.value.trim()) ||
-        !apiKeyRX.test(apiKeyGitHub.value.trim())
-      )
-        return showBoxes("error", "Api key اشتباه است!", true);
-    }
+    else if (
+      (apiKeyYoutube.value.trim() && !apiKeyRX.test(apiKeyYoutube.value)) ||
+      (apiKeyGitHub.value.trim() && !apiKeyRX.test(apiKeyGitHub.value))
+    )
+      return showBoxes("error", "Api key اشتباه است!", true);
 
     let apikeys;
     if (localStorage.getItem("apikeys")) {
       apikeys = JSON.parse(localStorage.getItem("apikeys"));
+
       apiKeyYoutube.value.trim()
         ? (apikeys.youtube = apiKeyYoutube.value.trim())
         : apikeys;
+
       apiKeyGitHub.value.trim()
         ? (apikeys.gitHub = apiKeyGitHub.value.trim())
         : apikeys;
@@ -119,5 +112,4 @@ function main() {
     apiKeyGitHub.value = "";
   });
 }
-main();
-let a = "https:youtube S 1 asdas dasdasd ";
+document.addEventListener("DOMContentLoaded", main);
