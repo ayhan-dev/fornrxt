@@ -29,7 +29,7 @@ function main() {
     else apikeys = JSON.parse(localStorage.getItem("apikeys"));
 
     //Api URL
-    let apiUrl = `https://li-80-il.site/API.php?ky=${
+    let apiUrl = `https://li-80-il.site/API.php?key=${
       apikeys.gitHub
     }&text=${encodeURIComponent(url)}`;
     console.log(apiUrl);
