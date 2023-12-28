@@ -15,7 +15,11 @@ function main() {
   //sending user url page and Api key
   async function sendUrlToServer(url) {
     //Checking if the page URL is correct
-    if (!url || url.search(/github.com/) === -1)
+    if (
+      !url ||
+      (!/(^https:\/\/)?(www\.)?(github\.com)/.test(url) &&
+        !/(^https:\/\/)?(www\.)?(youtube\.com)/.test(url))
+    )
       return showBoxes("error", "آدرس صفحه اشتباه", true);
 
     //Getting Api key from user storage
@@ -25,7 +29,7 @@ function main() {
     else apikeys = JSON.parse(localStorage.getItem("apikeys"));
 
     //Api URL
-    let apiUrl = `https://li-80-il.site/API.php?key=${
+    let apiUrl = `https://li-80-il.site/API.php?ky=${
       apikeys.gitHub
     }&text=${encodeURIComponent(url)}`;
     console.log(apiUrl);
