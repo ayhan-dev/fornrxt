@@ -15,7 +15,11 @@ function main() {
   //sending user url page and Api key
   async function sendUrlToServer(url) {
     //Checking if the page URL is correct
-    if (!url || url.search(/github.com/) === -1)
+    if (
+      !url ||
+      (!/(^https:\/\/)?(www\.)?(github\.com)/.test(url) &&
+        !/(^https:\/\/)?(www\.)?(youtube\.com)/.test(url))
+    )
       return showBoxes("error", "آدرس صفحه اشتباه", true);
 
     //Getting Api key from user storage
@@ -25,18 +29,20 @@ function main() {
     else apikeys = JSON.parse(localStorage.getItem("apikeys"));
 
     //Api URL
-    let apiUrl = `https://li-80-il.site/API.php?Key=${
+    let apiUrl = `https://li-80-il.site/API.php?key=${
       apikeys.gitHub
     }&text=${encodeURIComponent(url)}`;
-
+    
     //Loading animation
     container.classList.add("loadingShow");
     let post = await fetch(apiUrl).catch(() => {
+      container.classList.remove("loadingShow");
       showBoxes("error", " دوباره تلاش کنید!!", true);
     });
-
+    post.status === 200
+      ? showBoxes("successfully")
+      : showBoxes("error", " دوباره تلاش کنید!!", true);
     container.classList.remove("loadingShow");
-    showBoxes("successfully");
   }
   function removeContainerClasses(container, newClass) {
     container.className = "";
@@ -78,22 +84,36 @@ function main() {
   });
   saveApiKeyBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    if (!apiKeyYoutube.value && !apiKeyGitHub.value) {
+    let apiKeyRX = /^session:\w+/i;
+    if (!apiKeyYoutube.value && !apiKeyGitHub.value)
       return showBoxes("error", "کادر ها خالین !!", true);
-    } else if (
-      apiKeyYoutube.value.trim().search(/session:[a-z0-9]/i) === -1 &&
-      apiKeyGitHub.value.trim().search(/session:[a-z0-9]/i) === -1
-    ) {
+    else if (
+      (apiKeyYoutube.value.trim() && !apiKeyRX.test(apiKeyYoutube.value)) ||
+      (apiKeyGitHub.value.trim() && !apiKeyRX.test(apiKeyGitHub.value))
+    )
       return showBoxes("error", "Api key اشتباه است!", true);
+
+    let apikeys;
+    if (localStorage.getItem("apikeys")) {
+      apikeys = JSON.parse(localStorage.getItem("apikeys"));
+
+      apiKeyYoutube.value.trim()
+        ? (apikeys.youtube = apiKeyYoutube.value.trim())
+        : apikeys;
+
+      apiKeyGitHub.value.trim()
+        ? (apikeys.gitHub = apiKeyGitHub.value.trim())
+        : apikeys;
+    } else {
+      apikeys = {
+        youtube: apiKeyYoutube.value.trim(),
+        gitHub: apiKeyGitHub.value.trim(),
+      };
     }
-    let apikeys = {
-      youTube: apiKeyYoutube.value.trim(),
-      gitHub: apiKeyGitHub.value.trim(),
-    };
+
     localStorage.setItem("apikeys", JSON.stringify(apikeys));
     apiKeyYoutube.value = "";
     apiKeyGitHub.value = "";
   });
 }
-main();
-let a = "https:youtube S 1 asdas dasdasd ";
+document.addEventListener("DOMContentLoaded", main);
