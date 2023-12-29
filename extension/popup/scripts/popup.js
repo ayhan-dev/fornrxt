@@ -20,28 +20,32 @@ function main() {
       (!/(^https:\/\/)?(www\.)?(github\.com)/.test(url) &&
         !/(^https:\/\/)?(www\.)?(youtube\.com)/.test(url))
     )
-      return showBoxes("error", "آدرس صفحه اشتباه", true);
+      return showBoxes("error", "The page link is incorrect", true);
 
     //Getting Api key from user storage
     let apikeys;
     if (!JSON.parse(localStorage.getItem("apikeys")))
-      return showBoxes("error", "Api key در تنظیمات وارد نشده !!!", true);
+      return showBoxes(
+        "error",
+        "Api key is not entered in the settings!!!",
+        true
+      );
     else apikeys = JSON.parse(localStorage.getItem("apikeys"));
 
     //Api URL
     let apiUrl = `https://li-80-il.site/API.php?key=${
-      apikeys.gitHub
+      url.search(/youtube\.com/) !== -1 ? apikeys.youtube : apikeys.gitHub
     }&text=${encodeURIComponent(url)}`;
-    
+
     //Loading animation
     container.classList.add("loadingShow");
     let post = await fetch(apiUrl).catch(() => {
       container.classList.remove("loadingShow");
-      showBoxes("error", " دوباره تلاش کنید!!", true);
+      showBoxes("error", " Try again !!", true);
     });
     post.status === 200
       ? showBoxes("successfully")
-      : showBoxes("error", " دوباره تلاش کنید!!", true);
+      : showBoxes("error", " Try again !!", true);
     container.classList.remove("loadingShow");
   }
   function removeContainerClasses(container, newClass) {
@@ -59,7 +63,7 @@ function main() {
   }
 
   postURLApiBtn.addEventListener("click", function () {
-    if (!navigator.onLine) return showBoxes("error", "افلاینی ", true);
+    if (!navigator.onLine) return showBoxes("error", "you are offline ", true);
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       let activeTab = tabs[0];
       let pageUrl = activeTab.url;
@@ -67,12 +71,11 @@ function main() {
     });
   });
 
-  pagesBtn.forEach((pageBtn) => {
-    pageBtn.addEventListener("click", () => {
-      if (pageBtn.textContent === "راهنما")
-        removeContainerClasses(container, pageClasses[1]);
-      else removeContainerClasses(container, pageClasses[2]);
-    });
+  pagesBtn[0].addEventListener("click", () => {
+    removeContainerClasses(container, pageClasses[1]);
+  });
+  pagesBtn[1].addEventListener("click", () => {
+    removeContainerClasses(container, pageClasses[2]);
   });
   backToMainPageBtn.forEach((backBtn) => {
     backBtn.addEventListener("click", () => {
@@ -86,12 +89,12 @@ function main() {
     e.preventDefault();
     let apiKeyRX = /^session:\w+/i;
     if (!apiKeyYoutube.value && !apiKeyGitHub.value)
-      return showBoxes("error", "کادر ها خالین !!", true);
+      return showBoxes("error", "Forms are empty", true);
     else if (
       (apiKeyYoutube.value.trim() && !apiKeyRX.test(apiKeyYoutube.value)) ||
       (apiKeyGitHub.value.trim() && !apiKeyRX.test(apiKeyGitHub.value))
     )
-      return showBoxes("error", "Api key اشتباه است!", true);
+      return showBoxes("error", "Api key is wrong !!", true);
 
     let apikeys;
     if (localStorage.getItem("apikeys")) {

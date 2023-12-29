@@ -1,15 +1,11 @@
-@font-face {
-  font-family: vazir;
-  src: url(../assets/fonts/Vazir.ttf) format("truetype");
-  src: url(../assets/fonts/Vazir.woff) format("woff");
-}
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
 * {
   padding: 0;
   margin: 0;
   list-style: none;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: vazir;
+  font-family: "Roboto", sans-serif;
 }
 :root {
   --mainBackground: #353535;
@@ -146,6 +142,7 @@ body {
 .mainPage .header .dropMenu .dropMenuBtn {
   width: 30px;
   height: 30px;
+
   background-color: #ffffff;
   justify-content: end;
   position: relative;
@@ -174,6 +171,9 @@ body {
 .mainPage .header .dropMenu nav ul {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
   gap: 5px;
 }
 .mainPage .header .dropMenu nav ul li button {
@@ -223,10 +223,7 @@ body {
 .container.showHelpPage .helpPage {
   display: block;
 }
-.helpPage .header,
-.settingPage .header {
-  text-align: end;
-}
+
 .helpPage .header .backToMainPageBtn,
 .settingPage .header .backToMainPageBtn {
   background-color: transparent;
@@ -257,6 +254,7 @@ body {
   justify-content: center;
   background: radial-gradient(#160847, #a200ff);
   color: #ececec;
+  text-align: center;
   border-radius: 50%;
   font-size: 16px;
   position: absolute;
