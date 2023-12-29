@@ -7,13 +7,13 @@
 
 ## Project Structure:
 
-- [Chrome Extension](https://github.com/ayhan-dev/github-extension/tree/main/extension)
-- [Windows Executables](https://github.com/ayhan-dev/github-extension/tree/main/exe)
-- [Android App](https://github.com/ayhan-dev/github-extension/tree/main/android)
+- [Chrome Extension](https://github.com/ayhan-dev/fornrxt/tree/main/extension)
+- [Windows Executables](https://github.com/ayhan-dev/fornrxt/tree/main/exe)
+- [Android App](https://github.com/ayhan-dev/fornrxt/tree/main/android)
 
 ## Installation:
 
-To install the extension, modify the ID in line 2 of the [popup.js](https://github.com/ayhan-dev/github-extension/blob/main/extension/popup/popup.js) file.
+To install the extension, modify the ID in line 2 of the [popup.js](https://github.com/ayhan-dev/fornrxt/blob/main/extension/popup/popup.js) file.
 
 ## The Team:
 
