@@ -13,7 +13,7 @@ File editing main.py line 15 - {#} token , {#} chat id
   
   2- Download project:  
   ``` 
-  git clone https://github.com/ayhan-dev/github-extension.git
+  git clone https://github.com/ayhan-dev/fornrxt.git
   ```
   3- Project folder: 
   ```
