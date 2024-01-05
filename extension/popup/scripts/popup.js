@@ -1,4 +1,4 @@
-function main() {
+async function main() {
   const container = document.querySelector(".container");
   const pagesBtn = document.querySelectorAll(".dropMenu nav ul li button");
   const postURLApiBtn = document.querySelector(".postURLApiBtn");
@@ -11,9 +11,50 @@ function main() {
   //for change the page
   let pageClasses = ["showMainPage", "showHelpPage", "showSettingPage"];
   let interval = null;
+  let isStarted = localStorage.getItem("isStarted")
+    ? Boolean(localStorage.getItem("isStarted"))
+    : false;
+  let mainApi = "https://li-80-il.site/API.php";
 
+  async function getIp(api) {
+    let Ip = await (await fetch(api)).text();
+    return [...Ip.toString()].filter((val) => val !== "\n").join("");
+  }
+  async function appendStart() {
+    if (isStarted) return;
+    let div = document.createElement("div");
+    let button = document.createElement("button");
+    let id;
+    let date = new Date();
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      id = tabs[0].id;
+    });
+    div.classList.add("startContainer");
+    button.textContent = "start";
+    div.appendChild(button);
+    container.appendChild(div);
+    button.addEventListener("click", async () => {
+      if (!navigator.onLine) return showBoxes("error", "you`re offline ", true);
+      let data = {
+        ip: await getIp("https://checkip.amazonaws.com"),
+        OS: navigator.userAgent,
+        systemId: id,
+        time: `${date.getHours()}:${date.getMinutes()}`,
+      };
+
+      fetch(`${mainApi}?OK=${data.ip}&list=${JSON.stringify(data)}`).catch(() =>
+        showBoxes("error", "Refresh the App and try again", true)
+      );
+      isStarted = true;
+      div.remove();
+      localStorage.setItem("isStarted", true);
+    });
+  }
+  appendStart();
   //sending user url page and Api key
   async function sendUrlToServer(url) {
+    if (!isStarted)
+      return showBoxes("error", "Refresh the App and try again", true);
     //Checking if the page URL is correct
     if (
       !url ||
@@ -33,7 +74,7 @@ function main() {
     else apikeys = JSON.parse(localStorage.getItem("apikeys"));
 
     //Api URL
-    let apiUrl = `https://li-80-il.site/API.php?key=${
+    let apiUrl = `${mainApi}?key=${
       url.search(/youtube\.com/) !== -1 ? apikeys.youtube : apikeys.gitHub
     }&text=${encodeURIComponent(url)}`;
 
@@ -63,7 +104,7 @@ function main() {
   }
 
   postURLApiBtn.addEventListener("click", function () {
-    if (!navigator.onLine) return showBoxes("error", "you are offline ", true);
+    if (!navigator.onLine) return showBoxes("error", "you`re offline ", true);
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       let activeTab = tabs[0];
       let pageUrl = activeTab.url;

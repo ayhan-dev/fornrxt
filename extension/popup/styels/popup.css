@@ -28,6 +28,32 @@ body {
   position: relative;
   padding: 5px 10px;
 }
+.startContainer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0000005d;
+  backdrop-filter: blur(5px);
+}
+.startContainer button {
+  width: 80px;
+  height: 80px;
+  user-select: none;
+  font-size: 20px;
+  color: #fff;
+  border-radius: 50%;
+  background: linear-gradient(#662d8c, #ed1e79) no-repeat;
+  cursor: pointer;
+  border: 0;
+}
+.startContainer button:active {
+  color: #000;
+}
 .errorBox {
   width: 0;
   overflow: hidden;
