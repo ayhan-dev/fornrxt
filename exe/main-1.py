@@ -3,7 +3,7 @@ import re
 import webbrowser
 import requests
 
-
+#Technically obsolete!!
 def is_valid_github_link(link):
     pattern = r"https://github.com/[a-zA-Z0-9_-]+/[a-zA-Z0-9_-]+"
     return re.match(pattern, link) is not None
