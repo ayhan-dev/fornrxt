@@ -7,18 +7,17 @@
 
 ## Project Structure:
 
-- [Chrome Extension](https://github.com/ayhan-dev/fornrxt/tree/main/extension)
-- [Windows Executables](https://github.com/ayhan-dev/fornrxt/tree/main/exe)
-- [Android App](https://github.com/ayhan-dev/fornrxt/tree/main/android)
+- [Chrome Extension](https://github.com/ForN-EXT/fornrxt/tree/main/extension)
+- [Windows Executables](https://github.com/ForN-EXT/fornrxt/tree/main/exe)
+- [Android App](https://github.com/ForN-EXT/fornrxt/tree/main/android)
 
 ## Installation:
 
-To install the extension, modify the ID in line 2 of the [popup.js](https://github.com/ayhan-dev/fornrxt/blob/main/extension/popup/popup.js) file.
+To install the extension, modify the ID in line 2 of the [popup.js](https://github.com/ForN-EXT/fornrxt/blob/main/extension/popup/popup.js) file.
 
 ## The Team:
 
-- [Ayhan](https://ayhan-dev.dev)
-- [Telegram](https://t.me/ayhan_gy)
+- [Telegram](https://t.me/ayhan_dev)
 - [Support Channel](https://t.me/ForNRxt)
 
 ## License: GNU General Public License v3
